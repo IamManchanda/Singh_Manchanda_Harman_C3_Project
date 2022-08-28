@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.ArrayList;
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 class RestaurantTest {
@@ -88,14 +90,22 @@ class RestaurantTest {
 
     @Test
     public void getOrderTotal_should_return_0_if_no_items_are_ordered() {
-        int orderTotal = 1; // Temp, for failing test
-        assertEquals(0, orderTotal);
+        List<String> orderedItems = new ArrayList<>();
+        int orderTotal = restaurant.getOrderTotal(orderedItems);
+
+        int expectedTotal = 0; // As no items are ordered, the total should be 0
+        assertEquals(expectedTotal, orderTotal);
     }
 
     @Test
     public void getOrderTotal_should_return_correct_total_if_items_are_ordered() {
-        int orderTotal = 1; // Temp, for failing test
-        assertEquals(388, orderTotal);
+        List<String> orderedItems = new ArrayList<>();
+        orderedItems.add("Sweet corn soup"); // 119
+        orderedItems.add("Vegetable lasagne"); // 269
+        int orderTotal = restaurant.getOrderTotal(orderedItems);
+
+        int expectedTotal = 119 + 269; // As only 2 items are ordered, the total should be their prices added
+        assertEquals(expectedTotal, orderTotal);
     }
     // <<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
