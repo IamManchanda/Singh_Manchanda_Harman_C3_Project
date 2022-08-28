@@ -85,5 +85,17 @@ class RestaurantTest {
         assertThrows(itemNotFoundException.class,
                 () -> restaurant.removeFromMenu("French fries"));
     }
+
+    @Test
+    public void getOrderTotal_should_return_0_if_no_items_are_ordered() {
+        int orderTotal = 1; // Temp, for failing test
+        assertEquals(0, orderTotal);
+    }
+
+    @Test
+    public void getOrderTotal_should_return_correct_total_if_items_are_ordered() {
+        int orderTotal = 1; // Temp, for failing test
+        assertEquals(388, orderTotal);
+    }
     // <<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
